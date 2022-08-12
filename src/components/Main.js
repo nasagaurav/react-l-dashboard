@@ -23,7 +23,7 @@ export default function Main(props) {
           <section className="section">
             <div className="row">
               <h3>api {title}</h3>
-              <table className="table ">
+              <table className="table table-hover datatable">
                 <thead>
                   <tr>
                     {cols.map((x) => (

@@ -1,5 +1,4 @@
-export const getposts = (a, title) => {
-  const rows = a;
+export const getposts = (rows, title) => {
   const cols = ["id", "title", "body"];
   return {
     rows,
@@ -7,7 +6,7 @@ export const getposts = (a, title) => {
     title,
   };
 };
-export const getcomments = (a, title) => {
+export const getcomments = (rows, title) => {
   const cols = ["id", "name", "email", "body"];
   return {
     rows,
@@ -15,7 +14,7 @@ export const getcomments = (a, title) => {
     title,
   };
 };
-export const getalbums = (a, title) => {
+export const getalbums = (rows, title) => {
   const cols = ["id", "title"];
   return {
     rows,
@@ -23,7 +22,7 @@ export const getalbums = (a, title) => {
     title,
   };
 };
-export const getphotos = (a, title) => {
+export const getphotos = (rows, title) => {
   const cols = ["id", "title", "url"];
   return {
     rows,
@@ -31,7 +30,7 @@ export const getphotos = (a, title) => {
     title,
   };
 };
-export const gettodos = (a, title) => {
+export const gettodos = (rows, title) => {
   const cols = ["id", "title", "completed"];
   return {
     rows,
@@ -39,7 +38,7 @@ export const gettodos = (a, title) => {
     title,
   };
 };
-export const getusers = (a, title) => {
+export const getusers = (rows, title) => {
   const cols = ["id", "name", "username", "email", "phone", "website"];
   return {
     rows,
