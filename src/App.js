@@ -1,9 +1,13 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 export default function App() {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
