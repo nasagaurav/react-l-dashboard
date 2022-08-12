@@ -1,13 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export default function Header() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const logout = () => {
-    toast("logged out successfully")
-    navigate("/")
+    toast("logged out successfully");
+    navigate("/");
   };
-
+  const handleToggle = () => {
+    dispatch({ type: "menu" });
+  };
   return (
     <div>
       <>
@@ -17,18 +21,20 @@ export default function Header() {
           className="header fixed-top d-flex align-items-center"
         >
           <div className="d-flex align-items-center justify-content-between">
-            <a href="index.html" className="logo d-flex align-items-center">
-              <img src="assets/img/logo.png" alt="" />
+            <Link to="/Dashboard" className="logo d-flex align-items-center">
+              <img src="/assets/img/logo.png" alt="" />
               <span className="d-none d-lg-block">Admin Dashboard</span>
-            </a>
-            <i className="bi bi-list toggle-sidebar-btn" />
+            </Link>
+            <i
+              onClick={handleToggle}
+              className="bi bi-list toggle-sidebar-btn"
+            />
           </div>
           {/* End Logo */}
-         
+
           {/* End Search Bar */}
           <nav className="header-nav ms-auto">
             <ul className="d-flex align-items-center">
-             
               {/* End Search Icon*/}
               <li className="nav-item dropdown">
                 <a

@@ -7,7 +7,12 @@ const intialState = {
 };
 
 function reducer(state = intialState, action) {
-  return state;
+  switch (action.type) {
+    case "menu":
+      return { ...state, menu: !state.menu };
+    default:
+      return state;
+  }
 }
 
 const store = createStore(reducer);

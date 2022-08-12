@@ -1,17 +1,20 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 export default function Aside() {
+  const state = useSelector(s=>s);
+  const { menu } = state;
   return (
     <div>
       <>
         {/* ======= Sidebar ======= */}
-        <aside id="sidebar" className="sidebar">
+        <aside id="sidebar" className={!menu ? "sidebar" : "sidebar active"}>
           <ul className="sidebar-nav" id="sidebar-nav">
             <li className="nav-item">
-              <a className="nav-link collapsed" href="index.html">
+              <Link className="nav-link collapsed" to="/Dashboard">
                 <i className="bi bi-grid" />
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
             {/* End Dashboard Nav */}
             <li className="nav-item">
@@ -31,7 +34,7 @@ export default function Aside() {
                 data-bs-parent="#sidebar-nav"
               >
                 <li>
-                  <a href="components-alerts.html">
+                  <a href="#">
                     <i className="bi bi-circle" />
                     <span>Alerts</span>
                   </a>
@@ -42,7 +45,7 @@ export default function Aside() {
 
             <li className="nav-heading">Pages</li>
             <li className="nav-item">
-              <a className="nav-link collapsed" href="users-profile.html">
+              <a className="nav-link collapsed" href="#">
                 <i className="bi bi-person" />
                 <span>Profile</span>
               </a>
