@@ -13,6 +13,10 @@ function reducer(state = intialState, action) {
   switch (action.type) {
     case "menu":
       return { ...state, menu: !state.menu };
+      
+    case "table":
+      return { ...state, ...action.payload };
+
     default:
       return state;
   }
