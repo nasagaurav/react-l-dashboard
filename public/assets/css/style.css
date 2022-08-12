@@ -628,7 +628,9 @@ h6 {
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
 }
-
+.sidebar.active {
+  left: -300px;
+}
 @media (max-width: 1199px) {
   .sidebar {
     left: -300px;
