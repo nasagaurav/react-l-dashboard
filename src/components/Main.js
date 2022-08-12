@@ -1,6 +1,8 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 export default function Main(props) {
+  const state = useSelector((s) => s);
+  const { title, rows, cols } = state;
   return (
     <div>
       <>
@@ -20,7 +22,25 @@ export default function Main(props) {
           {/* End Page Title */}
           <section className="section">
             <div className="row">
-              {props.children}
+              <h3>api {title}</h3>
+              <table className="table ">
+                <thead>
+                  <tr>
+                    {cols.map((x) => (
+                      <th>{x}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr>
+                      {cols.map((col) => (
+                        <td>{row[col]}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </main>

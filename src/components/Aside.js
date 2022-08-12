@@ -1,27 +1,52 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import * as services from "../services";
 export default function Aside() {
   const state = useSelector((s) => s);
+  const dispatch = useDispatch();
   const { menu } = state;
   const dropdownOptions = [
     "posts",
     "comments",
-    "albumbs",
+    "albums",
     "photos",
     "todos",
     "users",
   ];
+
   const hc = (str) => {
     const url = `https://jsonplaceholder.typicode.com/${str}`;
-    if (str === "users") {
-    }
-    else{
-      axios.get(url)
-      .then(res=>res.data)
-      .then(d=>console.log(d))
-    }
+    axios
+      .get(url)
+      .then((res) => res.data)
+      .then((d) => {
+        switch (str) {
+          case "posts":
+            return services.getposts(d, str);
+            break;
+          case "comments":
+            return services.getcomments(d, str);
+            break;
+          case "albums":
+            return services.getalbums(d, str);
+            break;
+          case "photos":
+            return services.getphotos(d, str);
+            break;
+          case "todos":
+            return services.gettodos(d, str);
+            break;
+          case "users":
+            return services.getusers(d, str);
+            break;
+        }
+      })
+      .then((d) => {
+        // console.log(d);
+        dispatch({ type: "table", payload: d });
+      });
   };
   return (
     <div>

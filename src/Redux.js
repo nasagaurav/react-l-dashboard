@@ -4,6 +4,9 @@ import { createStore } from "redux";
 
 const intialState = {
   menu: false,
+  title: "",
+  rows: [],
+  cols: [],
 };
 
 function reducer(state = intialState, action) {
