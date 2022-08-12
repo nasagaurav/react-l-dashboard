@@ -1,9 +1,28 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
 export default function Aside() {
-  const state = useSelector(s=>s);
+  const state = useSelector((s) => s);
   const { menu } = state;
+  const dropdownOptions = [
+    "posts",
+    "comments",
+    "albumbs",
+    "photos",
+    "todos",
+    "users",
+  ];
+  const hc = (str) => {
+    const url = `https://jsonplaceholder.typicode.com/${str}`;
+    if (str === "users") {
+    }
+    else{
+      axios.get(url)
+      .then(res=>res.data)
+      .then(d=>console.log(d))
+    }
+  };
   return (
     <div>
       <>
@@ -25,7 +44,7 @@ export default function Aside() {
                 href="#"
               >
                 <i className="bi bi-menu-button-wide" />
-                <span>Components</span>
+                <span>All Api</span>
                 <i className="bi bi-chevron-down ms-auto" />
               </a>
               <ul
@@ -33,12 +52,14 @@ export default function Aside() {
                 className="nav-content collapse "
                 data-bs-parent="#sidebar-nav"
               >
-                <li>
-                  <a href="#">
-                    <i className="bi bi-circle" />
-                    <span>Alerts</span>
-                  </a>
-                </li>
+                {dropdownOptions.map((x) => (
+                  <li>
+                    <a onClick={() => hc(x)}>
+                      <i className="bi bi-circle" />
+                      <span>{x}</span>
+                    </a>
+                  </li>
+                ))}
               </ul>
             </li>
             {/* End Components Nav */}
